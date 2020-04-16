@@ -40,15 +40,21 @@
                         </div>
                     </div>
                     <div class="row">
-                        <p class=" col-md-10 offset-md-1">
-                            <?php if (has_post_thumbnail()) {
-                                the_post_thumbnail("large", "class='img-fluid'");
-                            } ?>
-                            <?php
-                            the_content();
-                            ?>
-                        </p>
-
+                        <div class=" col-md-10 offset-md-1">
+                            <p>
+                                <?php if (has_post_thumbnail()) {
+                                    the_post_thumbnail("large", "class='img-fluid'");
+                                } ?>
+                                <?php
+                                the_content();
+                                ?>
+                            </p>
+                        </div>
+                        <?php if (comments_open()) : ?>
+                            <div class="col-md-10 offset-md-1 ">
+                                <?php comments_template(); ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
