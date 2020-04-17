@@ -26,5 +26,26 @@ function alpha_sidebar()
         'before_title' => '<h2 class="widget-title">',
         'after_title' => '</h2>',
     ));
+
+    register_sidebar(array(
+        'name' => __('Footer Left', 'alpha'),
+        'id' => 'footer-left',
+        'description' => __('Widgetized area on left side', 'alpha'),
+        'before_widget' => '<section id="%1s" class="widget %2s">',
+        'after_widget' => '</section>',
+        'before_title' => '',
+        'after_title' => '',
+    ));
+
+    register_sidebar(array(
+        'name' => __('Footer Right', 'alpha'),
+        'id' => 'footer-right',
+        'description' => __('Widgetized area on right side', 'alpha'),
+        'before_widget' => '<section id="%1s" class="widget %2s">',
+        'after_widget' => '</section>',
+        'before_title' => '',
+        'after_title' => '',
+    ));
 }
+
 add_action("widgets_init", "alpha_sidebar");
