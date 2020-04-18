@@ -26,10 +26,11 @@
                         <div class="col-md-8">
                             <p>
                                 <?php if (has_post_thumbnail()) {
+                                    $thumbnail_url = get_the_post_thumbnail_url(null, "large");
+                                    printf('<a href="%s" data-featherlight="image">', $thumbnail_url);
                                     the_post_thumbnail("large", "class='img-fluid'");
-                                    the_excerpt();
-                                }
-                                ?>
+                                    echo '</a>';
+                                } ?>
                         </div>
                     </div>
                 </div>
