@@ -27,11 +27,7 @@
                             <p>
                                 <?php if (has_post_thumbnail()) {
                                     the_post_thumbnail("large", "class='img-fluid'");
-                                    if (!post_password_required()) {
-                                        the_excerpt();
-                                    } else {
-                                        echo get_the_password_form();
-                                    }
+                                    the_excerpt();
                                 }
                                 ?>
                         </div>
