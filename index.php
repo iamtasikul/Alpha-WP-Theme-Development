@@ -26,8 +26,9 @@
                         <div class="col-md-8">
                             <p>
                                 <?php if (has_post_thumbnail()) {
-                                    $thumbnail_url = get_the_post_thumbnail_url(null, "large");
-                                    printf('<a href="%s" data-featherlight="image">', $thumbnail_url);
+                                    // $thumbnail_url = get_the_post_thumbnail_url(null, "large");
+                                    // echo '<a href="%s" data-featherlight="image">';
+                                    echo '<a class="popup" href="#" data-featherlight="image">';
                                     the_post_thumbnail("large", "class='img-fluid'");
                                     echo '</a>';
                                 } ?>
