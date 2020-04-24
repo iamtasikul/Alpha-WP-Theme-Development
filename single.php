@@ -41,11 +41,17 @@
                                             ?>
                                         </p>
                                     </div>
-                                    <?php if (comments_open()) : ?>
-                                        <div class="col-md-10 offset-md-1 ">
-                                            <?php comments_template(); ?>
+                                    <div class="authorsection">
+                                        <div class="row">
+                                            <div class="col-md-4 authorimage">
+                                                <?php echo get_avatar(get_the_author_meta("id")); ?>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h4><?php echo get_the_author_meta("display_name"); ?></h4>
+                                                <p><?php echo get_the_author_meta("description"); ?></p>
+                                            </div>
                                         </div>
-                                    <?php endif; ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
