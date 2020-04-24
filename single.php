@@ -24,7 +24,7 @@ if (!is_active_sidebar("sidebar-1")) {
                                     <div class="col-md-10 offset-md-1">
                                         <h2 class="post-title <?php echo $alpha_text_class; ?>"><?php the_title(); ?></h2>
                                         <p class="<?php echo $alpha_text_class; ?>">
-                                            <strong><?php the_author(); ?></strong><br />
+                                            <strong><?php the_author_posts_link(); ?></strong><br />
                                             <?php echo get_the_date(); ?>
                                             <?php get_the_tag_list("<ul class='list-unstyled'>", "<li></li>", "<li></ul>"); ?>
                                         </p>
