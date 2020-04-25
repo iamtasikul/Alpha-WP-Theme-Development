@@ -1,4 +1,9 @@
 <?php
+if (class_exists('Attachments')) {
+    require_once "lib/attachments.php";
+}
+?>
+<?php
 if (site_url() == "http://localhost/wp") {
     define("VERSION", time());
 } else {
@@ -41,8 +46,10 @@ function alpha_assets()
     wp_enqueue_style("bootstrap", "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css");
     wp_enqueue_style("featherlight-css", "//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css");
     wp_enqueue_style('dashicons');
+    wp_enqueue_style("tns-style", "//cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css");
     wp_enqueue_style("alpha", get_stylesheet_uri(), null, VERSION);
     wp_enqueue_script("featherlight-js", "//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js", array('jquery'), null, true);
+    wp_enqueue_script("tns-js", "//cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js", null, "0.0.1", true);
     wp_enqueue_script("alpha-main",  get_theme_file_uri() . "/assets/js/main.js", array("jquery", "featherlight-js"), VERSION, true);
 }
 add_action("wp_enqueue_scripts", "alpha_assets");
