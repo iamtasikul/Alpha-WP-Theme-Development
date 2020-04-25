@@ -19,11 +19,50 @@ get_header(); ?>
                             <p class="text-center">
                                 <strong><?php the_author(); ?></strong><br />
                                 <?php echo get_the_date(); ?>
-                                <?php get_the_tag_list("<ul class='list-unstyled'>", "<li></li>", "<li></ul>"); ?>
+
                             </p>
                         </div>
                     </div>
                     <div class="row">
+                        <div class="row">
+                            <div class="col-md-8 offset-md-2">
+                                <?php
+                                $attachments = new Attachments('testimonials');
+                                if (class_exists("Attachments") && $attachments->exist()) {
+                                ?>
+                                    <h2 class="text-center">
+                                        <?php _e("Testimonials", "alpha"); ?>
+                                    </h2>
+                                <?php
+                                }
+                                ?>
+                                <div class="testimonials slider text-center">
+                                    <?php
+                                    if (class_exists("Attachments")) {
+
+                                        if ($attachments->exist()) {
+                                            while ($attachment = $attachments->get()) { ?>
+                                                <div>
+                                                    <?php echo $attachments->image('thumbnail'); ?>
+                                                    <h4><?php echo esc_html($attachments->field('name')); ?></h4>
+                                                    <p><?php echo esc_html($attachments->field('testimonial')); ?></p>
+                                                    <p>
+                                                        <?php echo esc_html($attachments->field('position')); ?>,
+                                                        <strong>
+                                                            <?php echo esc_html($attachments->field('company')); ?>
+                                                        </strong>
+                                                    </p>
+                                                </div>
+                                    <?php
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class=" col-md-10 offset-md-1">
                             <p>
                                 <?php if (has_post_thumbnail()) {
