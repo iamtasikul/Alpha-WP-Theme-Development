@@ -165,3 +165,9 @@ function alpha_highlight_search_results($text)
 add_filter('the_content', 'alpha_highlight_search_results');
 add_filter('the_excerpt', 'alpha_highlight_search_results');
 add_filter('the_title', 'alpha_highlight_search_results');
+
+//function alpha_image_srcset(){
+//    return null;
+//}
+//add_filter("wp_calculate_image_srcset","alpha_image_srcset");
+add_filter("wp_calculate_image_srcset", "__return_null");
