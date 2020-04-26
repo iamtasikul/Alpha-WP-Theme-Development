@@ -38,6 +38,10 @@ function alpha_bootstraping()
     register_nav_menu("topmenu", __("Top Menu", "alpha"));
     register_nav_menu("footermenu", __("Footer Menu", "alpha"));
     add_theme_support('post-formats', array("aside", "link", "gallery", "image", "quote", "video", "audio"));
+    add_image_size('alpha-square', 400, 400, true);
+    add_image_size('alpha-portrait', 400, 9999);
+    add_image_size('alpha-landscape', 9999, 400);
+    add_image_size('alpha-landscape-hard-cropped', 600, 400);
 }
 
 add_action("after_setup_theme", "alpha_bootstraping");
