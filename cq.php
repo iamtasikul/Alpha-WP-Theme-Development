@@ -19,13 +19,13 @@
             'orderby' => 'post__in',
             'paged' => $paged,
         ));
-        foreach ($_p as $post) {
-            setup_postdata($post);
+        foreach ($_p as $p) {
         ?>
-            <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
+            <h2>
+                <a href="<?php echo esc_url($p->guid); ?>"><?php echo apply_filters("the_title", $p->post_title); ?></a>
+            </h2>
         <?php
         }
-        wp_reset_postdata();
         ?>
         <div class="container post-pagination">
             <div class="row">
