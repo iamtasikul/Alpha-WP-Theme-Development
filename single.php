@@ -79,6 +79,13 @@ if (!is_active_sidebar("sidebar-1")) {
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php if (!post_password_required()) : ?>
+                                            <div class="col-md-12">
+                                                <?php
+                                                comments_template();
+                                                ?>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
