@@ -11,10 +11,9 @@
     <div class="posts text-center">
         <?php
         $paged = get_query_var("paged") ? get_query_var("paged") : 1;
-        $post_ids = array(14, 17, 20, 5, 8, 11);
         $posts_per_page = 2;
         $_p = new WP_Query(array(
-            'post__in' => $post_ids,
+            'category_name' => 'uncategorized',
             'posts_per_page' => $posts_per_page,
             'orderby' => 'post__in',
             'paged' => $paged,
@@ -33,7 +32,13 @@
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-8">
-
+                    <?php
+                    echo paginate_links(array(
+                        'total' => $_p->max_num_pages,
+                        'current' => $paged,
+                        'prev_next' => false
+                    ))
+                    ?>
                 </div>
             </div>
         </div>
