@@ -20,14 +20,9 @@
             'tax_query' => array(
                 'relation' => 'OR',
                 array(
-                    'taxonomy' => 'category',
+                    'taxonomy' => 'post_format',
                     'field'    => 'slug',
-                    'terms'    => array('news')
-                ),
-                array(
-                    'taxonomy' => 'post_tag',
-                    'field'    => 'slug',
-                    'terms'    => array('tag1,tag2')
+                    'terms'    => array('post-format-audio', 'post-format-link')
                 ),
             )
         ));
