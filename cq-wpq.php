@@ -13,10 +13,23 @@
         $paged = get_query_var("paged") ? get_query_var("paged") : 1;
         $posts_per_page = 2;
         $_p = new WP_Query(array(
-            'category_name' => 'uncategorized',
+            // 'category_name' => 'uncategorized',
             'posts_per_page' => $posts_per_page,
             'orderby' => 'post__in',
             'paged' => $paged,
+            'tax_query' => array(
+                'relation' => 'OR',
+                array(
+                    'taxonomy' => 'category',
+                    'field'    => 'slug',
+                    'terms'    => array('news')
+                ),
+                array(
+                    'taxonomy' => 'post_tag',
+                    'field'    => 'slug',
+                    'terms'    => array('tag1,tag2')
+                ),
+            )
         ));
         while ($_p->have_posts()) {
             $_p->the_post();
