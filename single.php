@@ -61,7 +61,7 @@ if (!is_active_sidebar("sidebar-1")) {
                                                 } ?>
                                                 <?php
                                                 the_content();
-                                                if (get_post_format() == "image") :
+                                                if (get_post_format() == "image" && function_exists("the_field")) :
                                                 ?>
                                                     <div class="metainfo">
                                                         <strong>Camera Model: </strong> <?php the_field('camera_model'); ?><br />
@@ -71,6 +71,14 @@ if (!is_active_sidebar("sidebar-1")) {
                                                         <?php if (get_field("licensed")) : ?>
                                                             <?php echo apply_filters("the_content", get_field("license_information")); ?>
                                                         <?php endif; ?>
+                                                        <p>
+                                                            <?php
+                                                            $alpha_image         = get_field("image");
+                                                            $alpha_image_details = wp_get_attachment_image_src($alpha_image, "alpha-square");
+                                                            echo "<img src='" . esc_url($alpha_image_details[0]) . "'/>";
+                                                            ?>
+                                                        </p>
+
                                                     </div>
                                                 <?php endif; ?>
                                                 <?php
