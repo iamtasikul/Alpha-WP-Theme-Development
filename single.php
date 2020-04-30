@@ -82,42 +82,37 @@ if (!is_active_sidebar("sidebar-1")) {
 
                                                     </div>
                                                 <?php endif; ?>
-                                                <p>
-                                                    <?php
-                                                    $file = get_field("attachment");
-                                                    if ($file) {
-                                                        $file_url   = wp_get_attachment_url($file);
-                                                        $file_thumb = get_field("thumbnail", $file);
-                                                        if ($file_thumb) {
-                                                            $file_thumb_details = wp_get_attachment_image_src($file_thumb);
-                                                            echo "<a target='_blank' href='{$file_url}'><img src='" . esc_url($file_thumb_details[0]) . "'/></a>";
-                                                        } else {
-                                                            echo "<a target='_blank' href='{$file_url}'>{$file_url}</a>";
-                                                        }
+
+
+                                                <?php
+                                                if (!class_exists('Attachments')) {
+                                                    if (has_post_thumbnail()) {
+                                                        // $thumbnail_url = get_the_post_thumbnail_url(null, "large");
+                                                        // echo '<a href="%s" data-featherlight="image">';
+                                                        echo '<a class="popup" href="#" data-featherlight="image">';
+                                                        the_post_thumbnail("large", "class='img-fluid'");
+                                                        echo '</a>';
                                                     }
-                                                    ?>
-                                                </p>
-                                                <?php if (function_exists("the_field")) : ?>
-                                                    <div>
-                                                        <h1><?php _e("Related Posts", "alpha"); ?></h1>
-                                                        <?php
-                                                        $related_posts = get_field("related_posts");
-                                                        $alpha_rp      = new WP_Query(array(
-                                                            'post__in' => $related_posts,
-                                                            'orderby'  => 'post__in',
-                                                        ));
-
-
-                                                        while ($alpha_rp->have_posts()) {
-                                                            $alpha_rp->the_post();
-                                                        ?>
-                                                            <h4><?php the_title(); ?></h4>
-                                                        <?php
-                                                        }
-                                                        wp_reset_query();
-                                                        ?>
+                                                } ?>
+                                                <?php
+                                                the_content();
+                                                if (get_post_format() == "image" && class_exists("CMB2")) :
+                                                    $alpha_camera_model = get_post_meta(get_the_ID(), "_alpha_camera_model", true);
+                                                    $alpha_location = get_post_meta(get_the_ID(), "_alpha_location", true);
+                                                    $alpha_date = get_post_meta(get_the_ID(), "_alpha_date", true);
+                                                    $alpha_licensed = get_post_meta(get_the_ID(), "_alpha_licensed", true);
+                                                    $alpha_license_information = get_post_meta(get_the_ID(), "_alpha_license_information", true);
+                                                ?>
+                                                    <div class="metainfo">
+                                                        <strong>Camera Model: </strong> <?php echo esc_html($alpha_camera_model); ?><br />
+                                                        <strong>Location: </strong><?php echo esc_html($alpha_location); ?><br />
+                                                        <strong>Date: </strong> <?php echo esc_html($alpha_date); ?><br />
+                                                        <?php if ($alpha_licensed) : ?>
+                                                            <?php echo apply_filters("the_content", $alpha_license_information); ?>
+                                                        <?php endif; ?>
                                                     </div>
                                                 <?php endif; ?>
+
                                                 <?php
                                                 wp_link_pages();
                                                 // next_post_link();
