@@ -65,7 +65,12 @@ function alpha_register_required_plugins()
 		array(
 			'name'      => 'ACF',
 			'slug'      => 'advanced-custom-fields',
-			'required'  => true,
+			'required'  => false,
+		),
+		array(
+			'name'      => 'CMB2',
+			'slug'      => 'cmb2',
+			'required'  => false,
 		),
 
 		// This is an example of the use of 'is_callable' functionality. A user could - for instance -
