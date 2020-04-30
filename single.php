@@ -62,9 +62,10 @@ if (!is_active_sidebar("sidebar-1")) {
                                                 <?php
                                                 the_content();
                                                 if (get_post_format() == "image" && function_exists("the_field")) :
+                                                    $camera_model = get_post_meta(get_the_ID(), "camera_model", true);
                                                 ?>
                                                     <div class="metainfo">
-                                                        <strong>Camera Model: </strong> <?php the_field('camera_model'); ?><br />
+                                                        <strong>Camera Model: </strong> <?php echo esc_html($camera_model); ?><br />
                                                         <strong>Location: </strong><?php $alpha_location = get_field("location");
                                                                                     echo esc_html($alpha_location); ?><br />
                                                         <strong>Date: </strong> <?php the_field("date"); ?><br />
