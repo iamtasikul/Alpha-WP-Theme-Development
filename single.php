@@ -112,6 +112,16 @@ if (!is_active_sidebar("sidebar-1")) {
                                                 <div class="col-md-6">
                                                     <h4><?php echo get_the_author_meta("display_name"); ?></h4>
                                                     <p><?php echo get_the_author_meta("description"); ?></p>
+                                                    <?php if (function_exists("the_field")) : ?>
+                                                        <p>
+                                                            Facebook
+                                                            URL: <?php the_field("facebook", "user_" . get_the_author_meta("ID")) ?>
+                                                            <br />
+                                                            Twitter
+                                                            URL: <?php the_field("twitter", "user_" . get_the_author_meta("ID")) ?>
+                                                            <br />
+                                                        </p>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>
