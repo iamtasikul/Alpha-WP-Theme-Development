@@ -107,3 +107,44 @@ function cmb2_add_pricingtable()
 }
 
 add_action('cmb2_init', 'cmb2_add_pricingtable');
+
+/**
+ * Services
+ */
+add_action('cmb2_init', 'alpha_add_services');
+function alpha_add_services()
+{
+
+    $prefix = '_alpha_';
+
+    $cmb = new_cmb2_box(array(
+        'id'           => $prefix . 'services',
+        'title'        => __('Services', 'alpha'),
+        'object_types' => array('page'),
+        'context'      => 'normal',
+        'priority'     => 'default',
+    ));
+
+    $service = $cmb->add_field(array(
+        'name' => __('service', 'alpha'),
+        'id' => $prefix . 'service',
+        'type' => 'group',
+    ));
+
+    $cmb->add_group_field($service, array(
+        'name' => __('icon', 'alpha'),
+        'id' => $prefix . 'icon',
+        'type' => 'text',
+    ));
+
+    $cmb->add_group_field($service, array(
+        'name' => __('title', 'alpha'),
+        'id' => $prefix . 'title',
+        'type' => 'text',
+    ));
+    $cmb->add_group_field($service, array(
+        'name' => __('content', 'alpha'),
+        'id' => $prefix . 'content',
+        'type' => 'text',
+    ));
+}
