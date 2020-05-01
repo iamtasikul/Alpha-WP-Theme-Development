@@ -47,4 +47,9 @@ function cmb2_add_image_info_metabox()
             'data-conditional-id' => $prefix . 'licensed',
         ),
     ));
+    $cmb->add_field(array(
+        'name' => __('Image', 'alpha'),
+        'id'   => $prefix . 'image',
+        'type' => 'file',
+    ));
 }
