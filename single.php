@@ -119,6 +119,12 @@ if (!is_active_sidebar("sidebar-1")) {
                                                     echo "<img src='" . esc_url($alpha_image_details[0]) . "'/>";
                                                     ?>
                                                 </p>
+                                                <p>
+                                                    <?php
+                                                    $alpha_file         = get_post_meta(get_the_ID(), "_alpha_resume", true);
+                                                    echo esc_url($alpha_file);
+                                                    ?>
+                                                </p>
 
                                                 <?php
                                                 wp_link_pages();
